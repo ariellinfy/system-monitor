@@ -2,7 +2,7 @@
 #include "linux_parser.h"
 
 
-// TODO: Return the aggregate CPU utilization
+// DONE: Return the aggregate CPU utilization
 // Calcuation reference: https://stackoverflow.com/questions/23367857/accurate-calculation-of-cpu-usage-given-in-percentage-in-linux
 float Processor::Utilization() { 
   float utilization{0};
@@ -21,5 +21,5 @@ float Processor::Utilization() {
   prevNonIdle = nonIdle;
   prevIdle = idle;
   
-  return utilization * 100; 
+  return utilization; 
 }
