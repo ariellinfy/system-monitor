@@ -154,7 +154,8 @@ long LinuxParser::ActiveJiffies() {
   return stof(cpuData[kUser_]) + stof(cpuData[kNice_]) + stof(cpuData[kSystem_]) + stof(cpuData[kIRQ_]) + stof(cpuData[kSoftIRQ_]) + stof(cpuData[kSteal_]); 
 }
 
-// DONE: Read and return the number of active jiffies for a PID
+// TODO: Read and return the number of active jiffies for a PID
+// REMOVE: [[maybe_unused]] once you define the function
 long LinuxParser::ActiveJiffies(int pid) { 
   string line, value;
   long utime{0}, stime{0}, cutime{0}, cstime{0};
@@ -209,11 +210,12 @@ vector<int> LinuxParser::Pids() {
   return pids;
 }
 
-// DONE: Read and return the user ID associated with a process
+// TODO: Read and return the user ID associated with a process
+// REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Uid(int pid) { 
   string line;
   string key, value = "unknown";
-  std::ifstream filestream(kProcDirectory + to_string(pid) + kStatusFilename);
+  std::ifstream filestream(kProcDirectory + std::to_string(pid) + kStatusFilename);
   if (filestream.is_open()) {
     while (std::getline(filestream, line)) {
       std::istringstream linestream(line);
@@ -227,7 +229,8 @@ string LinuxParser::Uid(int pid) {
   return value;
 }
 
-// DONE: Read and return the user associated with a process
+// TODO: Read and return the user associated with a process
+// REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::User(int pid) { 
   string line;
   string user = "unknown", id, x;
@@ -247,7 +250,8 @@ string LinuxParser::User(int pid) {
   return user;
 }
 
-// DONE: Read and return the memory used by a process
+// TODO: Read and return the memory used by a process
+// REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Ram(int pid) { 
   string line;
   string key, value = "0";
@@ -265,7 +269,8 @@ string LinuxParser::Ram(int pid) {
   return to_string((int)(stof(value) / 1024));
 }
 
-// DONE: Read and return the uptime of a process
+// TODO: Read and return the uptime of a process
+// REMOVE: [[maybe_unused]] once you define the function
 long LinuxParser::UpTime(int pid) { 
   string line;
   string value{0};
@@ -281,7 +286,8 @@ long LinuxParser::UpTime(int pid) {
   return stof(value) / sysconf(_SC_CLK_TCK);
 }
 
-// DONE: Read and return the command associated with a process
+// TODO: Read and return the command associated with a process
+// REMOVE: [[maybe_unused]] once you define the function
 string LinuxParser::Command(int pid) { 
   string line;
   string command;
@@ -293,3 +299,5 @@ string LinuxParser::Command(int pid) {
   }
   return command;
 }
+
+
